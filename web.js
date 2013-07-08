@@ -5,7 +5,7 @@ var buf = new Buffer (225);
 
 app.get('/', function (request, response){
 
-fs.readFileSync('ec2-54-216-108-155.eu-west-1.compute.amazonaws.com:~/bitstarter/index.html', function (err, data){
+fs.readFileSync('/index.html', function (err, data){
 if (err) throw err;
 console.log(data);
 });
