@@ -1,12 +1,16 @@
 var express = require ('express');
 var fs = require ('fs');
 var app = express.createServer(express.logger());
+var buf = new Buffer (225);
 
 app.get('/', function (request, response){
+
 request.fs.readFileSync(index.html);
-buf = new Buffer(256);
-len = buf.write('\u00bd + \u00bc = \u00be', 0);
-console.log(len + " bytes: " + buf.toString('utf8', 0, len));
+
+buffer.toString('utf-8');
+
+//len = buf.write('\u00bd + \u00bc = \u00be', 0);
+//console.log(len + " bytes: " + buf.toString('utf8', 0, len));
 request.pipe(response);
 
 
