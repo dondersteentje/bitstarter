@@ -18,7 +18,7 @@ buffer.toString('utf-8');
 
 len = buf.write('\u00bd + \u00bc = \u00be', 0);
 console.log(len + " bytes: " + buf.toString('utf8', 0, len));
-request.pipe(response);
+//request.pipe(response);
 
 
 //response.send ("HellO World 2!");
