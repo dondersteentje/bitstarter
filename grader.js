@@ -37,14 +37,14 @@ var assertFileExists = function(infile) {
     }
     return instr;
 };
-rest.get('http://obscure-basin-5236.herokuapp.com').on('complete', function(result) {
-  if (result instanceof Error) {
-    sys.puts('Error: ' + result.message);
-    this.retry(5000); // try again after 5 sec
-  } else {
-    sys.puts(result);
-  }
-});
+//rest.get('http://obscure-basin-5236.herokuapp.com').on('complete', function(result) {
+  //if (result instanceof Error) {
+    //sys.puts('Error: ' + result.message);
+   // this.retry(5000); // try again after 5 sec
+ // } else {
+   // sys.puts(result);
+ // }
+//});
 
 
 var cheerioHtmlFile = function(htmlfile) {
@@ -77,9 +77,12 @@ if(require.main == module) {
        .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
        .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
        .parse(process.argv);
-    var checkJson = checkHtmlFile(program.file, program.checks);
+rest.get('http://obscure-basin-5236.herokuapp.com').on('complete', function(result) {
+    var checkJson = checkHtmlFile(program.file|| program.url, program.checks);
     var outJson = JSON.stringify(checkJson, null, 4);
     console.log(outJson);
-}else {
+});
+}
+else; {
     exports.checkHtmlFile = checkHtmlFile;
 }
