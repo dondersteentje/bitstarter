@@ -24,6 +24,8 @@ References:
 var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
+var sys = require ('util');
+var rest = require('./restler');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
 
@@ -35,6 +37,15 @@ var assertFileExists = function(infile) {
     }
     return instr;
 };
+rest.get('http://obscure-basin-5236.herokuapp.com').on('complete', function(result) {
+  if (result instanceof Error) {
+    sys.puts('Error: ' + result.message);
+    this.retry(5000); // try again after 5 sec
+  } else {
+    sys.puts(result);
+  }
+});
+
 
 var cheerioHtmlFile = function(htmlfile) {
     return cheerio.load(fs.readFileSync(htmlfile));
