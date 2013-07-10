@@ -38,7 +38,7 @@ var assertUrlExists = function() {
 		console.log('Error: ' + result.message);
 		this.retry(5000); // try again after 5 sec
 	} else {
-		fs.writeFileSync(htmlfile, result);
+		fs.writeFileSync(outfile, result);
 	}
 	return checkHtmlFile(result);
 	});
