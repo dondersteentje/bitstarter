@@ -1,28 +1,15 @@
 var express = require ('express');
 var fs = require ('fs');
+var htmlfile="index.html";
+
 var app = express.createServer(express.logger());
-var buf = new Buffer(fs.readFileSync('index.html'), 'utf-8');
 
 app.get('/', function (request, response){
-
-response.send(buf.toString());
+ var html=fs.readFileSync(htmlfile).toString();
+ response.send(html);
 });
-//response.send(buffer.toString('utf-8', fs.readFileSync('index.html', function (err,data) {
-//if (err) throw err;
-//console.log (data);})));
 
-//fs.readFileSync('index.html', function (err, data){
-//if (err) throw err;
-//console.log(data);
-//});
-//buffer.toString('utf-8');
-//len = buf.write('\u00bd + \u00bc = \u00be', 0);
-//console.log(len + " bytes: " + buf.toString('utf8', 0, len));
-//request.pipe(response);
-//response.send ("HellO World 2!");
-//(end);
-
-var port = process.env. PORT || 5000;
+var port = process.env. PORT || 8080;
 app.listen(port, function() {
 console.log ("Listening on " +port);
 });
